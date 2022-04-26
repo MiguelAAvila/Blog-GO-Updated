@@ -15,46 +15,13 @@ import (
 	"mavila_frosado.net/test1/pkg/models"
 )
 
-//Home Page
+//blog Page
 func (app *application) home(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path != "/" {
 		app.notFound(w)
 		return
 	}
 
-	//  panic("This is not good! Oops")
-
-	ts, err := template.ParseFiles("./ui/html/index.tmpl")
-	port := app.addr
-
-	if err != nil {
-		app.serverError(w, err)
-	}
-	data := &templateData{
-		Port: port,
-	}
-	err = ts.Execute(w, data)
-	if err != nil {
-		app.serverError(w, err)
-	}
-}
-
-//Displays SingUp Form
-func (app *application) createBlogForm(w http.ResponseWriter, r *http.Request) {
-	ts, err := template.ParseFiles("./ui/html/form.tmpl")
-	if err != nil {
-		app.serverError(w, err)
-		return
-	}
-	err = ts.Execute(w, nil)
-	if err != nil {
-		app.serverError(w, err)
-	}
-
-}
-
-//blog Page
-func (app *application) blogs(w http.ResponseWriter, r *http.Request) {
 	blogs, err := app.Blogs.Read()
 	port := app.addr
 
@@ -79,6 +46,44 @@ func (app *application) blogs(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		app.serverError(w, err)
 		return
+	}
+
+}
+
+//Home Page
+// func (app *application) home(w http.ResponseWriter, r *http.Request) {
+// 	if r.URL.Path != "/" {
+// 		app.notFound(w)
+// 		return
+// 	}
+
+// 	//  panic("This is not good! Oops")
+
+// 	ts, err := template.ParseFiles("./ui/html/index.tmpl")
+// 	port := app.addr
+
+// 	if err != nil {
+// 		app.serverError(w, err)
+// 	}
+// 	data := &templateData{
+// 		Port: port,
+// 	}
+// 	err = ts.Execute(w, data)
+// 	if err != nil {
+// 		app.serverError(w, err)
+// 	}
+// }
+
+//Displays SingUp Form
+func (app *application) createBlogForm(w http.ResponseWriter, r *http.Request) {
+	ts, err := template.ParseFiles("./ui/html/form.tmpl")
+	if err != nil {
+		app.serverError(w, err)
+		return
+	}
+	err = ts.Execute(w, nil)
+	if err != nil {
+		app.serverError(w, err)
 	}
 
 }

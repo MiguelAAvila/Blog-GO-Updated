@@ -4,18 +4,21 @@ package main
 
 import (
 	"net/http"
+
+	"github.com/bmizerany/pat"
 )
 
 func (app *application) routes() http.Handler {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/", app.home)
-	mux.HandleFunc("/createblog", app.createBlogForm)
-	mux.HandleFunc("/blog-add", app.createBlog)
-	mux.HandleFunc("/blogs", app.blogs)
-	mux.HandleFunc("/show-blog", app.showBlog)
+	//Thrird party router/multiplexer
+	mux := pat.New()
+	mux.Get("/", http.HandlerFunc(app.home))
+	mux.Get("/blog/create", http.HandlerFunc(app.createBlogForm))
+	mux.Post("/blog/create", http.HandlerFunc(app.createBlog))
+	mux.Get("/blog/:id", http.HandlerFunc(app.showBlog))
+	// mux.HandleFunc("/blogs", app.blogs)
 	//create a fileserver to serve static files
 	fs := http.FileServer(http.Dir("./ui/static/"))
-	mux.Handle("/static/", http.StripPrefix("/static/", fs))
+	mux.Get("/static/", http.StripPrefix("/static/", fs))
 
 	return app.recoverPanicMiddleware(app.logRequestMiddleware(securityHeadersMiddleware(mux)))
 }
