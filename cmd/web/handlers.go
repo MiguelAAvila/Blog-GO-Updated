@@ -17,10 +17,6 @@ import (
 
 //blog Page
 func (app *application) home(w http.ResponseWriter, r *http.Request) {
-	if r.URL.Path != "/" {
-		app.notFound(w)
-		return
-	}
 
 	blogs, err := app.Blogs.Read()
 	port := app.addr
@@ -90,10 +86,6 @@ func (app *application) createBlogForm(w http.ResponseWriter, r *http.Request) {
 
 //Extract, Validate and Write to the blogs table
 func (app *application) createBlog(w http.ResponseWriter, r *http.Request) {
-	if r.Method != http.MethodPost {
-		http.Redirect(w, r, "/", http.StatusSeeOther)
-		return
-	}
 	err := r.ParseForm()
 	if err != nil {
 		app.clientError(w, http.StatusBadRequest)
@@ -160,12 +152,12 @@ func (app *application) createBlog(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	// fmt.Fprintf(w, "Row with id %d has been inserted.", id)
-	http.Redirect(w, r, fmt.Sprintf("/show-blog?id=%d", id), http.StatusSeeOther)
+	http.Redirect(w, r, fmt.Sprintf("/blog/%d", id), http.StatusSeeOther)
 }
 
 func (app *application) showBlog(w http.ResponseWriter, r *http.Request) {
 	port := app.addr
-	id, err := strconv.Atoi(r.URL.Query().Get("id"))
+	id, err := strconv.Atoi(r.URL.Query().Get(":id"))
 	if err != nil || id < 1 {
 		app.notFound(w)
 		return
