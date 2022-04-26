@@ -1,0 +1,172 @@
+<!-- Members: Miguel Avila, Federico Rosado -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Form Page | Advance Database Test</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+     <link rel="stylesheet" href="/static/css/form.css" />
+
+  </head>
+  <body>
+    <header class="mb-auto p-3">
+      <div>
+        <h3 class="float-md-start mb-0">CMPS3162 - Advanced Databases</h3>
+      </div>
+    </header>
+    <section class="ftco-section">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-6 text-center mb-5"></div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-lg-10">
+            <div class="wrapper">
+              <div class="row no-gutters">
+                <div class="col-md-6 d-flex align-items-stretch">
+                  <div class="contact-wrap w-100 p-md-5 p-4 py-5">
+                    <h3 class="mb-4">Create Post</h3>
+
+                    <form
+                      method="POST"
+                      id="contactForm"
+                      name="contactForm"
+                      class="contactForm"
+                      action="/blog-add"
+                    >
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group row">
+                            {{ with .ErrorsFromForm.firstname }}
+                              <label class="error"> {{ . }}</label>
+                            {{ end }}
+                            <input
+                              type="text"
+                              class="form-control col-md-5 ml-3 mr-5"
+                              name="firstname"
+                              placeholder="First Name"
+                              value="{{ .FormData.Get "firstname" }}"
+                            />
+                            {{ with .ErrorsFromForm.lastname }}
+                            <label class="error"> {{ . }}</label>
+                          {{ end }}
+
+                            <input
+                              type="text"
+                              class="form-control col-md-5"
+                              name="lastname"
+                              id="name"
+                              placeholder="Last Name"
+                              value = "{{ .FormData.Get "lastname" }}"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            {{ with .ErrorsFromForm.email }}
+                            <label class="error"> {{ . }}</label>
+                          {{ end }}
+                            <input
+                              type="email"
+                              class="form-control"
+                              name="email"
+                              id="email"
+                              placeholder="Email"
+                              value = "{{ .FormData.Get "email" }}"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            {{ with .ErrorsFromForm.subject }}
+                            <label class="error"> {{ . }}</label>
+                          {{ end }}
+                            <input
+                              type="text"
+                              class="form-control"
+                              name="subject"
+                              id="subject"
+                              placeholder="Subject"
+                              value = "{{ .FormData.Get "subject" }}"
+
+                            />
+                          </div>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            {{ with .ErrorsFromForm.message }}
+                            <label class="error"> {{ . }}</label>
+                          {{ end }}
+                            <textarea
+                              name="message"
+                              class="form-control"
+                              id="message"
+                              cols="30"
+                              rows="6"
+                              placeholder="Message"
+                            >{{ .FormData.Get "message" }}</textarea>
+                          </div>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <button class="btn btn-primary">
+                              <span class="fa fa-paper-plane"></span> Create
+                              Post
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <div class="col-md-6 d-flex align-items-stretch">
+                  <div class="info-wrap w-100 p-md-5 p-4 py-5 img">
+                    <h3>Hi Stranger</h3>
+                    <p class="mb-4">
+                      Welcome to our Blog, Use the side form to create a post
+                      for the blog. Please note that All fields are required.
+                    </p>
+                    <p>
+                      After posting your content you will be automatically
+                      redirected to the blog page. At the blog page you can
+                      navigate to the Home or create another post if you like.
+                    </p>
+                    <div class="mt-lg-5 dbox d-flex align-items-start">
+                      <img width="100%" src="https://scontent.fbze2-1.fna.fbcdn.net/v/t1.6435-9/71796754_2458444754220923_7957489855821250560_n.jpg?_nc_cat=107&ccb=1-5&_nc_sid=e3f864&_nc_ohc=y2yV_OrNwe0AX_3ljfu&_nc_ht=scontent.fbze2-1.fna&oh=00_AT-lZaxi5T8-jgUr3WG-fVE2H1pIVEpBjB3Wyt5xGnSlXA&oe=6257AD25" />
+                    </div>
+                    <p class="text-center">
+                      CMPS3162 - Advanced Databases<br />
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="mt-4 text-center text-black-50">
+      <p>
+        UB Email Address:
+
+        <a href="mailto:2013110993@ub.edu.bz" class="text-dark"
+          >2013110993@ub.edu.bz</a
+        >, &
+        <a href="mailto:2018219412@ub.edu.bz" class="text-dark"
+          >2018219412@ub.edu.bz</a
+        >.
+      </p>
+    </footer>
+  </body>
+</html>

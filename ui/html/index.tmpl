@@ -1,0 +1,77 @@
+<!-- Members: Miguel Avila, Federico Rosado -->
+
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Home | Advance Database Test</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/ui/hmtl/assets/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Custom styles for this template -->
+    <link href="cover.css" rel="stylesheet" />
+     <link rel="stylesheet" href="/static/css/home.css" />
+  
+  </head>
+  <body class="d-flex h-100 text-center text-white bg-dark">
+    <div class="d-flex w-100 h-100 p-3 mx-auto flex-column">
+      <header class="mb-auto p-3">
+        <div>
+          <h3 class="float-md-start mb-0">CMPS3162 - Advanced Databases</h3>
+          <nav class="nav nav-masthead justify-content-center float-md-end">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link" href="http://localhost{{.Port }}/createblog">Create a Post</a>
+            <a class="nav-link" href="http://localhost{{.Port }}/blogs">View Blog</a>
+          </nav>
+        </div>
+      </header>
+
+      <div class="container px-4 py-5" id="custom-cards">
+        <div class="row row-cols-1 row-cols-lg-2 align-items-stretch g-4 py-5">
+          <div class="col">
+            <div onclick="location.href='http://localhost{{.Port }}/createblog'"
+              class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg"
+              style="background-image: url('https://scontent.fbze2-1.fna.fbcdn.net/v/t1.6435-9/71796754_2458444754220923_7957489855821250560_n.jpg?_nc_cat=107&ccb=1-5&_nc_sid=e3f864&_nc_ohc=y2yV_OrNwe0AX_3ljfu&_nc_ht=scontent.fbze2-1.fna&oh=00_AT-lZaxi5T8-jgUr3WG-fVE2H1pIVEpBjB3Wyt5xGnSlXA&oe=6257AD25'); cursor: pointer;"
+            >
+              <div
+                class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1"
+              >
+                <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">
+                  Create A Post
+                </h2>
+              </div>
+            </div>
+          </div>
+
+          <div class="col">
+            <div onclick="location.href='http://localhost{{.Port }}/blogs'"
+              class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg"
+              style="background-image: url('https://www.comunicaffe.com/wp-content/uploads/2016/05/Coffee-and-Books.jpg'); cursor: pointer;"
+            >
+              <div
+                class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1"
+              >
+                <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">View Blog</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="mt-auto text-white-50">
+        <p>
+          UB Email Address:
+
+          <a href="mailto:2013110993@ub.edu.bz" class="text-white"
+            >2013110993@ub.edu.bz</a
+          >, &
+          <a href="mailto:2018219412@ub.edu.bz" class="text-white"
+            >2018219412@ub.edu.bz</a
+          >.
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>

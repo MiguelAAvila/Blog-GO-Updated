@@ -1,0 +1,140 @@
+<!-- Members: Miguel Avila, Federico Rosado -->
+<!-- Members: Miguel Avila, Federico Rosado -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Blog | Advance Database Test</title>
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+     <link rel="stylesheet" href="/static/css/blog.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">CMPS3162 - Advanced Databases</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarCollapse"
+            aria-controls="navbarCollapse"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="http://localhost{{.Port }}/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="http://localhost{{.Port }}/createblog">Create Post</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+   <main>
+      <div class="container marketing">
+        <!-- START THE FEATURETTES -->
+
+      {{ if .Blogs }}
+      {{range .Blogs }}
+
+        <hr class="featurette-divider" />
+
+        <div class="row featurette">
+          <div class="col-md-7">
+            <h2 class="featurette-heading">
+              Subject:
+              <span class="text-muted"> {{ .Subject }}</span>
+            </h2>
+            <p class="lead">
+              {{ .Message }}
+            </p>
+            <p class="mt-5 w-100 row">
+              <span class="col-md-6 text-muted">Posted by: {{ .FirstName }} {{ .LastName }} </span>
+              <span class="col-md-6 text-muted">Date: {{ .Date_Created }} </span>
+              <span class="col-md-6 text-muted">Email: {{ .Email }} </span>
+            </p>
+          </div>
+
+          <div class="col-md-5">
+            <img
+              class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
+              width="500"
+              height="500"
+              src="https://cdn.shopify.com/s/files/1/1834/6077/files/26_Best_Coffee_Blogs_and_Websites.jpg?v=1519932751"
+              role="img"
+              aria-label="Placeholder: 500x500"
+              preserveAspectRatio="xMidYMid slice"
+              focusable="false"
+            >
+          </div>
+        </div>
+      {{end}}
+      {{else}}
+       <hr class="featurette-divider" />
+
+        <div class="row featurette">
+          <div class="col-md-7">
+            <h2 class="featurette-heading">
+                Nothing here to see. Please add a blog to see something here.
+            </h2>
+          </div>
+
+          <div class="col-md-5">
+            <img
+              class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
+              width="500"
+              height="500"
+              src="https://cdn.shopify.com/s/files/1/1834/6077/files/26_Best_Coffee_Blogs_and_Websites.jpg?v=1519932751"
+              role="img"
+              aria-label="Placeholder: 500x500"
+              preserveAspectRatio="xMidYMid slice"
+              focusable="false"
+            >
+            </img>
+          </div>
+        </div>
+
+        <hr class="featurette-divider" />
+      {{end}}
+
+
+        <!-- /END THE FEATURETTES -->
+    </div>
+
+        <!-- /.container -->
+    </main>
+        <!-- FOOTER -->
+
+    <footer class="mt-4 text-center text-black-50">
+        <hr class="featurette-divider" />
+        <p>
+            UB Email Address:
+
+            <a href="mailto:2013110993@ub.edu.bz" class="text-dark"
+            >2013110993@ub.edu.bz</a
+            >, &
+            <a href="mailto:2018219412@ub.edu.bz" class="text-dark"
+            >2018219412@ub.edu.bz</a
+            >.
+        </p>
+      </footer>
+  </body>
+</html>
+
+
+
